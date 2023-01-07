@@ -1,9 +1,9 @@
 import datetime
 import time
 
-from strategy.config_strategy_api import session
-from strategy.config_strategy_api import timeframe
-from strategy.config_strategy_api import kline_limit
+from config import session_auth
+from config import timeframe
+from config import kline_limit
 
 """
     interval: 60, "D"
@@ -25,7 +25,7 @@ time_start_seconds = int(time_start_date.timestamp())
 def get_price_klines(symbol):
     prices = []
 
-    prices_res = session.query_mark_price_kline(
+    prices_res = session_auth.query_mark_price_kline(
         symbol = symbol,
         interval = timeframe,
         limit=kline_limit,

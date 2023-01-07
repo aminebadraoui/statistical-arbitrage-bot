@@ -1,10 +1,10 @@
-from strategy.config_strategy_api import session
+from config import  session_auth
 
 # Get tradeable symbols
 
 def get_tickers():
     sym_list = []
-    symbols = session.query_symbol()
+    symbols = session_auth.query_symbol()
 
     if "ret_msg" in symbols.keys():
         if symbols["ret_msg"] == "OK":

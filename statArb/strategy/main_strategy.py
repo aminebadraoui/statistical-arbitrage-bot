@@ -12,27 +12,27 @@ from strategy.func_get_zscore import get_zscores
 """ Strategy code """
 
 if __name__ == "__main__":
-    # # Step 1 - Get the list of symbols
-    # print("Getting tickers...")
-    # tickers = get_tickers()
-    #
-    # # Step 2 - Get the price history for every symbol and store it
-    # print("Getting price history for all tickers....")
-    # if len(tickers) > 0:
-    #     tickers_with_price = get_price_history_for_tickers(tickers)
-    #
-    #     if len(tickers_with_price) > 0:
-    #         with open("../price_list.json", "w") as jsonfile:
-    #             json.dump(tickers_with_price, jsonfile, indent=4)
-    #
-    # # Step 3 - Compute the cointegrated pairs and save it
-    # print("Computing co-integration among every ticker...")
-    # with open("../price_list.json") as price_json:
-    #     tickers_with_price_from_json = json.load(price_json)
-    #
-    #     df_cointegrated_tickers = get_cointegrated_tickers(tickers_with_price_from_json)
-    #     df_cointegrated_tickers = df_cointegrated_tickers.sort_values("Zero Crossings", ascending=False)
-    #     df_cointegrated_tickers.to_csv("cointegrated_tickers.csv")
+    # Step 1 - Get the list of symbols
+    print("Getting tickers...")
+    tickers = get_tickers()
+
+    # Step 2 - Get the price history for every symbol and store it
+    print("Getting price history for all tickers....")
+    if len(tickers) > 0:
+        tickers_with_price = get_price_history_for_tickers(tickers)
+
+        if len(tickers_with_price) > 0:
+            with open("../price_list.json", "w") as jsonfile:
+                json.dump(tickers_with_price, jsonfile, indent=4)
+
+    # Step 3 - Compute the cointegrated pairs and save it
+    print("Computing co-integration among every ticker...")
+    with open("../price_list.json") as price_json:
+        tickers_with_price_from_json = json.load(price_json)
+
+        df_cointegrated_tickers = get_cointegrated_tickers(tickers_with_price_from_json)
+        df_cointegrated_tickers = df_cointegrated_tickers.sort_values("Zero Crossings", ascending=False)
+        df_cointegrated_tickers.to_csv("cointegrated_tickers.csv")
 
     # Step 4 -Plot trends and save it
     print("Plotting trends...")

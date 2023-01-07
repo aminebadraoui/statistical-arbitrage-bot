@@ -1,5 +1,5 @@
 import pandas as pd
-from strategy.config_strategy_api import z_score_window
+from config import z_score_window
 
 # Compute zscore
 def get_zscores(spread):
