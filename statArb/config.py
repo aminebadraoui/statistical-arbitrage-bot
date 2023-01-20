@@ -42,20 +42,12 @@ z_score_window = 21
 """ Execution specific configuration """
 limit_order = True # Ensures all positions (except close) are limit orders, switch to False for maket orders
 
-# Tickers
-ticker_0 = "HOTUSDT" # TODO: get dynamically
-ticker_1 = "SCUSDT" # TODO: get dynamically
-signal_positive_ticker = ticker_0 # TODO: get dynamically
-signal_negative_ticker = ticker_1 # TODO: get dynamically
-rounding_ticker_0 = 5 # TODO: get dynamically
-rounding_ticker_1 = 3 # TODO: get dynamically
-qty_rounding_ticker_0 = 0 # TODO: get dynamically
-qty_rounding_ticker_1 = 1 # TODO: get dynamically
-
 # RISK
-tradeable_capital_usdt = 1000
+balance = 1000
 stop_loss_failsafe = 0.15
 
 # Signal
 signal_tresh = 1.1 # Z-Score tresh (absolute value)
 close_tresh = 0
+
+should_refresh = True

@@ -2,6 +2,8 @@
 def get_orderbook_mid_prices(data):
     bid_prices = []
     ask_prices = []
+    qty_rounding = 0
+    price_rounding = 0
     ticker = ""
 
     # Classify data between Bids and Asks
@@ -9,6 +11,15 @@ def get_orderbook_mid_prices(data):
         for level in data:
             price = level["price"]
             ticker = level["symbol"]
+            size = level["size"]
+
+            if len(str(size).split(".")) == 1:
+                qty_rounding = 0
+            else:
+                 qty_rounding = len(str(size).split(".")[1])
+
+            price_rounding = len(str(price).split(".")[1])
+
             if(level["side"] == "Buy"):
                 bid_prices.append(price)
             if (level["side"] == "Sell"):
@@ -27,11 +38,15 @@ def get_orderbook_mid_prices(data):
 
     mid_price = (float(nearest_ask) + float(nearest_bid)) / 2
 
+    rounded_mid_price = round(mid_price, price_rounding)
+
     dict = {
         "ticker": ticker,
         "nearest_ask": nearest_ask,
         "nearest_bid": nearest_bid,
-        "mid_price": mid_price
+        "mid_price": rounded_mid_price,
+        "price_rounding": price_rounding,
+        "qty_rounding": qty_rounding
     }
     return dict
 

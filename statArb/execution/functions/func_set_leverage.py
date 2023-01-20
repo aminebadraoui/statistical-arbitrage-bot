@@ -5,7 +5,8 @@ def set_leverage(session, ticker_0, ticker_1):
             is_isolated=True,
             buy_leverage='1',
             sell_leverage='1')
-    except:
+    except Exception as e:
+        print(e)
         pass
 
     try:
@@ -14,5 +15,6 @@ def set_leverage(session, ticker_0, ticker_1):
        is_isolated=True,
        buy_leverage='1',
        sell_leverage='1')
-    except:
+    except Exception as e:
+        print(e)
         pass
