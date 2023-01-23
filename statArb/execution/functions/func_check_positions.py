@@ -1,4 +1,4 @@
-from config import session_auth
+from state import session_auth
 
 def check_open_positions(ticker):
     try:
@@ -30,13 +30,13 @@ def check_active_positions(ticker):
             return False
 
 def get_position_info(ticker):
-
     # Declare output variables
-    side = 0
-    size = ""
+    side = ""
+    size = 0
 
     # Extract position info
     position = session_auth.my_position(symbol=ticker)
+
     if "ret_msg" in position.keys():
         if position["ret_msg"] == "OK":
             if len(position["result"]) == 2:
@@ -50,4 +50,15 @@ def get_position_info(ticker):
     # Return output
     return side, size
 
+def is_position_active_or_open(ticker_0, ticker_1):
+    ticker_0_open_position_check = check_open_positions(ticker_0)
+    ticker_0_active_position_check = check_active_positions(ticker_1)
+
+    ticker_1_open_position_check = check_open_positions(ticker_0)
+    ticker_1_active_position_check = check_active_positions(ticker_1)
+
+    position_checks = [ticker_0_open_position_check, ticker_0_active_position_check, ticker_1_open_position_check,
+                       ticker_1_active_position_check]
+
+    return any(position_checks)
 

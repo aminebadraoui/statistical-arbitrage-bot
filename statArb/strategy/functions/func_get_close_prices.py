@@ -1,9 +1,9 @@
 import datetime
 import time
 
-from config import session_public
-from config import timeframe
-from config import kline_limit
+from state import session_public
+from state import timeframe
+from state import kline_limit
 
 """
     interval: 60, "D"

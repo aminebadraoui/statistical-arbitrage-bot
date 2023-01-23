@@ -19,5 +19,5 @@ if __name__ == "__main__":
     #         check if total pnl < loss limit => close all
     #     if no order:
     #         for pair in pairs:
-    #             if hot => place positions + check next pair
+    #             if hot => place get_positions.py + check next pair
     #             if cold => check next pair

@@ -1,4 +1,4 @@
-from config import session_auth
+from state import session_auth
 from execution.functions.func_check_positions import get_position_info
 
 #  Place market close order
@@ -19,13 +19,16 @@ def place_market_close_order(ticker, side, size):
     return
 
 
-def close_all_positions(ticker_0, ticker_1):
+def close_position(ticker, qty):
     # Get position information
-    side_1, size_1 = get_position_info(ticker_0)
-    side_2, size_2 = get_position_info(ticker_1)
+    side, size = get_position_info(ticker)
 
-    if size_1 > 0:
-        place_market_close_order(ticker_0, side_2, size_1)  # use side 2
+    if size > 0:
+        new_side = ""
 
-    if size_2 > 0:
-        place_market_close_order(ticker_1, side_1, size_2)  # use side 1
+        if side == "Buy":
+            new_side = "Sell"
+        else:
+            new_side = "Buy"
+
+        place_market_close_order(ticker, new_side, min(qty,size))

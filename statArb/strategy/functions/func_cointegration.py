@@ -20,6 +20,11 @@ def calculate_average_volatility(closing_prices, window):
 def classify_cointegrated_pairs(data, significance=0.05):
    return data
 
+def get_uid(ticker_0, ticker_1):
+    sorted_characters = sorted([ticker_0, ticker_1])
+    unique_id = "".join((sorted_characters))
+
+    return unique_id
 # Extract cointegrated pairs
 def get_cointegrated_tickers(allPairsPrices):
     cointegrated_pairs = []
@@ -32,10 +37,7 @@ def get_cointegrated_tickers(allPairsPrices):
 
             if ticker_1 != ticker_0:
                 # Get unique combination
-                sorted_characters = sorted([ticker_0,ticker_1])
-                unique_id = "".join((sorted_characters))
-
-
+                unique_id = get_uid(ticker_0, ticker_1)
                 if unique_id in unique_pair_combination_list:
                     continue
                 else:

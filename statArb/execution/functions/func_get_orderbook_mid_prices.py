@@ -10,7 +10,7 @@ def get_orderbook_mid_prices(data):
     if len(data) > 0 :
         for level in data:
             price = level["price"]
-            ticker = level["symbol"]
+            symbol = level["symbol"]
             size = level["size"]
 
             if len(str(size).split(".")) == 1:
@@ -41,7 +41,7 @@ def get_orderbook_mid_prices(data):
     rounded_mid_price = round(mid_price, price_rounding)
 
     dict = {
-        "ticker": ticker,
+        "symbol": symbol,
         "nearest_ask": nearest_ask,
         "nearest_bid": nearest_bid,
         "mid_price": rounded_mid_price,

@@ -1,5 +1,5 @@
 import pandas as pd
-from config import z_score_window
+from state import z_score_window
 
 # Compute zscore
 def get_zscores(spread):

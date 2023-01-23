@@ -1,4 +1,4 @@
-from config import  session_auth
+from state import  session_auth
 
 # Get tradeable symbols
 

@@ -1,5 +1,5 @@
 from strategy.functions.func_get_close_prices import get_close_prices_and_vol
-from config import  kline_limit
+from state import  kline_limit
 
 
 def get_price_history_for_tickers(symbols):
